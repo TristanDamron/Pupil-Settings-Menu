@@ -35,17 +35,17 @@
                     var left = $('#left').val();
                     var right = $('#right').val();
                     
-                    if (left == 1) {
+                    if (left == -1) {
                         $('#left-eye').attr('src','img/Left.png');
-                    } else if (left == 2) {
+                    } else if (left == 0) {
                         $('#left-eye').attr('src','img/Center.png');
                     } else {
                         $('#left-eye').attr('src','img/Right.png');
                     }
 
-                    if (right == 1) {
+                    if (right == -1) {
                         $('#right-eye').attr('src','img/Left.png');
-                    } else if (right == 2) {
+                    } else if (right == 0) {
                         $('#right-eye').attr('src','img/Center.png');
                     } else {
                         $('#right-eye').attr('src','img/Right.png');
@@ -63,12 +63,12 @@
                 <div class="inline">
                     <!-- @TODO: Add fields for left and right eyes in PupilDataHolder -->
                     <p>Left Eye</p>
-                    <input id="left" name="left" type="range" min="1" max="3" value="2">                    
+                    <input id="left" name="left" type="range" min="-1" max="1" value="0">                    
                 </div>
 
                 <div class="inline">
                     <p>Right Eye</p>
-                    <input id="right" name="right" type="range" min="1" max="3" value="2">       
+                    <input id="right" name="right" type="range" min="-1" max="1" value="0">       
                 </div>
 
                 <div class="inline">
