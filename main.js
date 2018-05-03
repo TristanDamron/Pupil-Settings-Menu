@@ -16,7 +16,7 @@ function createWindow () {
 app.on('ready', createWindow);
 
 function dumpToFile(json) {
-    fs.writeFile("../PupilData.json", json, function(err) {
+    fs.writeFile("../PupilData.json", unityifyJson(json), function(err) {
         if (err) {
             return console.error("ERROR: Cannot open file.");
         }  
@@ -24,14 +24,38 @@ function dumpToFile(json) {
     });
 }
 
-// @TODO: Do I need to make the json file look more like a serialized Unity object?
 function unityifyJson(json) {
-    var ret = json.replace('[', '');
-    ret = ret.replace(']', '');
-    ret = ret.replace('{', '');
-    ret = ret.replace('}', '');
-    ret = ret.replace('\"name\":', '');
+    var ret = json.replace(/\[/g, '');
+    ret = ret.replace(/]/g, '');
+    ret = ret.replace(/{/g, '');
+    ret = ret.replace(/}/g, '');
+    ret = ret.replace(/"name":/g, '');
+    ret = ret.replace(/"value":/g, '');
+    ret = ret.replace(/"/g, '');
     ret = "{" + ret + "}";
-    console.log(ret);
+
+    var count = 1;
+    var i = 0;
+    for (i; i < ret.length; i++) {
+        if (ret[i] == ',') {
+            if (count == 1) {
+                count = -1;
+                ret = replaceAt(ret, i, ':');
+            }
+            count++;
+        }
+    }
+
+    ret = ret.replace('left', '\"left\"');
+    ret = ret.replace('right', '\"right\"');
+    ret = ret.replace('minIPD', '\"minIPD\"');
+    ret = ret.replace('maxIPD', '\"maxIPD\"');
+    ret = ret.replace('minDistance', '\"minDistance\"');
+    ret = ret.replace('maxDistance', '\"maxDistance\"');
+
     return ret;
+}
+
+function replaceAt (original, index, str) {
+    return original.substr(0, index) + str + original.substr(index + 1, original.length);
 }
