@@ -35,7 +35,7 @@
                     var left = $('#left').val();
                     var right = $('#right').val();
                     
-                    if (left == -1) {
+                    if (left == -0.2) {
                         $('#left-eye').attr('src','img/Left.png');
                     } else if (left == 0) {
                         $('#left-eye').attr('src','img/Center.png');
@@ -43,7 +43,7 @@
                         $('#left-eye').attr('src','img/Right.png');
                     }
 
-                    if (right == -1) {
+                    if (right == -0.2) {
                         $('#right-eye').attr('src','img/Left.png');
                     } else if (right == 0) {
                         $('#right-eye').attr('src','img/Center.png');
@@ -62,12 +62,12 @@
             <form>
                 <div class="inline">
                     <p>Left Eye</p>
-                    <input id="left" name="left" type="range" min="-0.2" max="0" value="0.2">                    
+                    <input id="left" name="left" type="range" step="0.2" min="-0.2" max="0.2" value="0">                    
                 </div>
 
                 <div class="inline">
                     <p>Right Eye</p>
-                    <input id="right" name="right" type="range" min="-0.2" max="0" value="0.2">       
+                    <input id="right" name="right" type="range" step="0.2" min="-0.2" max="0.2" value="0">       
                 </div>
 
                 <div class="inline">
