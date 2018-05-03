@@ -30,6 +30,24 @@
                         $('#tooltip').text($(this).attr('alt'));
                     });
                 });
+
+                $('#max').change(function (event) {
+                    event.preventDefault();
+                    if ($(this).val().length != 3) {
+                        $('#tooltip').text('Error: Must be a decimal in the form \"0.1\"');
+                    } else {
+                        $('#tooltip').text('');
+                    }
+                });
+
+                $('#min').change(function (event) {
+                    event.preventDefault();
+                    if ($(this).val().length != 3) {
+                        $('#tooltip').text('Error: Must be a decimal in the form \"0.1\"');
+                    } else {
+                        $('#tooltip').text('');
+                    }
+                });
                 
                 function changeImage() {
                     var left = $('#left').val();
@@ -79,13 +97,13 @@
                 </div>
 
                 <p>Min Distance IPD (% decimal)</p>
-                <input type="text" name="minIPD">    
+                <input id="min" type="text" name="minIPD">    
                 <div class="inline">
                     <img id="tooltip1" alt="This value corresponds to the percent change between your pupils when looking at an object close up versus far away." src="img/Tooltip.png" width="20px" height="20px"/>
                 </div>
     
                 <p>Max Distance IPD (% decimal)</p>
-                <input type="text" name="maxIPD">
+                <input id="max" type="text" name="maxIPD">
                 <div class="inline">
                     <img id="tooltip2" alt="This value corresponds to the percent change between your pupils when looking at an object far away versus close up. (Usually 1)" src="img/Tooltip.png" width="20px" height="20px"/>
                 </div>                
