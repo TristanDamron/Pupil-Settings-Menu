@@ -4,7 +4,7 @@ const url = require('url');
 const fs = require('fs');
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 700});
+  win = new BrowserWindow({width: 800, height: 800});
   
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -52,6 +52,20 @@ function unityifyJson(json) {
     ret = ret.replace('maxIPD', '\"maxIPD\"');
     ret = ret.replace('minDistance', '\"minDistance\"');
     ret = ret.replace('maxDistance', '\"maxDistance\"');
+    ret = ret.replace('red', '\"red\"');
+    ret = ret.replace('blue', '\"blue\"');
+    ret = ret.replace('green', '\"green\"');
+    ret = ret.replace('yellow', '\"yellow\"');
+
+    var replaceHex = (str) => '\"' + str + '\"';
+
+    var hex = ret.match(/#[a-fA-F0-9]+/g);
+
+    hex.forEach(element => {
+        var s = replaceHex(element);
+        console.log(s);
+        ret = ret.replace(element, s);
+    });
 
     return ret;
 }
