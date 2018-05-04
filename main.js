@@ -4,7 +4,7 @@ const url = require('url');
 const fs = require('fs');
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 800, resizable: false});
+  win = new BrowserWindow({width: 800, height: 830, resizable: false});
   
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -53,6 +53,9 @@ function unityifyJson(json) {
     ret = ret.replace('maxIPD', '\"maxIPD\"');
     ret = ret.replace('minDistance', '\"minDistance\"');
     ret = ret.replace('maxDistance', '\"maxDistance\"');
+    ret = ret.replace('colorBlind', '\"colorBlind\"');
+    ret = ret.replace('on', 'true');
+    ret = ret.replace('off', 'false');
     ret = ret.replace('red', '\"red\"');
     ret = ret.replace('blue', '\"blue\"');
     ret = ret.replace('green', '\"green\"');
