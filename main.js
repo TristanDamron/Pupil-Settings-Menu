@@ -46,6 +46,7 @@ function unityifyJson(json) {
         }
     }
 
+    //@TODO: This could be refactored and implemented like the hexadecimal replacement function.
     ret = ret.replace('left', '\"left\"');
     ret = ret.replace('right', '\"right\"');
     ret = ret.replace('minIPD', '\"minIPD\"');
