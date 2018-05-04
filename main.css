@@ -30,3 +30,9 @@ h1 {
     color: #fff;
     text-align: center;
 }
+
+.error {    
+    border-color: #cc6677;
+    border-style: solid;
+    border-width: 2px;
+}

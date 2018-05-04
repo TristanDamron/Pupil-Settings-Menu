@@ -35,8 +35,10 @@
                     event.preventDefault();
                     if ($(this).val().length != 3) {
                         $('#tooltip').text('Error: Must be a decimal in the form \"0.1\"');
+                        $(this).attr("class", "error");
                     } else {
                         $('#tooltip').text('');
+                        $(this).attr("class", "");
                     }
                 });
 
@@ -44,8 +46,10 @@
                     event.preventDefault();
                     if ($(this).val().length != 3) {
                         $('#tooltip').text('Error: Must be a decimal in the form \"0.1\"');
+                        $(this).attr("class", "error");
                     } else {
                         $('#tooltip').text('');
+                        $(this).attr("class", "");
                     }
                 });
                 
