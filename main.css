@@ -13,6 +13,10 @@ h1 {
     left: 0;
 }
 
+form {
+    padding-top: 100px;
+}
+
 .inline {
     display: inline-block;
 }
