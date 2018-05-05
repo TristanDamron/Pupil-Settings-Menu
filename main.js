@@ -63,13 +63,9 @@ function unityifyJson(json) {
 
     var replaceHex = (str) => '\"' + str + '\"';
 
-    var hex = ret.match(/#[a-fA-F0-9]+/g);
-
-    hex.forEach(element => {
-        var s = replaceHex(element);
-        console.log(s);
-        ret = ret.replace(element, s);
-    });
+    ret = ret.replace(/#[a-fA-F0-9]+/g, function (match) {
+        return replaceHex(match);
+    });         
 
     return ret;
 }
