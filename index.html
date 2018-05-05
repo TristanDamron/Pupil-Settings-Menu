@@ -24,7 +24,7 @@
                     changeImage();
                 });
 
-                $('#tooltip1,#tooltip2,#tooltip3,#tooltip4').each(function () {
+                $('#tooltip1,#tooltip2,#tooltip3,#tooltip4,#tooltip5').each(function () {
                     $(this).click(function (event) {
                         event.preventDefault();
                         $('#tooltip').text($(this).attr('alt'));
@@ -128,8 +128,12 @@
                 </br>
                 <p class="inline">Colorblind Mode</p>
                 <input type="checkbox" name="colorBlind">
+                <div class="inline">
+                    <img id="tooltip5" alt="Change the color palette to accomodate colorblind players. Leave color as black rgb(0, 0, 0) for no change." src="img/Tooltip.png" width="20px" height="20px"/>
+                </div>                     
                 
-                <p>Color Palette</p>
+                <p>Color Palette</p>           
+
                 <i>Red</i>
                 <input type="color" value="#f44141" name="red">
 
