@@ -50,8 +50,7 @@ function unityifyJson(json) {
     ret = ret.replace('left', '\"left\"');
     ret = ret.replace('right', '\"right\"');
     ret = ret.replace('minIPD', '\"minIPD\"');
-    ret = ret.replace('maxIPD', '\"maxIPD\"');
-    ret = ret.replace('minDistance', '\"minDistance\"');
+    ret = ret.replace('maxIPD', '\"maxIPD\"');    
     ret = ret.replace('maxDistance', '\"maxDistance\"');
     ret = ret.replace('colorBlind', '\"colorBlind\"');
     ret = ret.replace('on', 'true');
