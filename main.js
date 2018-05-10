@@ -4,7 +4,7 @@ const url = require('url');
 const fs = require('fs');
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 830, resizable: false, icon: path.join(__dirname, '/img/Pupil-Icon.png')});
+  win = new BrowserWindow({width: 800, height: 830, resizable: false, icon: path.join(__dirname, '/img/Pupil Icon.png')});
   
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
