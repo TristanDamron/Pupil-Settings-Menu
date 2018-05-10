@@ -6,7 +6,9 @@
         <script src="main.js"></script>
         <script>window.$ = window.jQuery = require('jquery');</script>
         <script>         
-            $(document).ready(function() {              
+            $(document).ready(function() {  
+                var companies = findCompanies();
+                
                 $('form').submit(function (event) {
                     event.preventDefault();
                     var data = JSON.stringify($(this).serializeArray());
@@ -53,6 +55,35 @@
                     }
                 });
 
+                $.each(findCompanies(), function(index, value) {
+                    $('#company').append($('<option>' + value + '</option>'));
+                });
+               
+
+                $('#company').change(function () {                           
+                    setCompany($(this).val());
+                    $.each(findGames(), function(index, value) {
+                        if (value != null) {
+                            $('#games').append($('<option>' + value + '</option>'));
+                        }
+                    }); 
+                });
+
+                $('#games').change(function () {
+                    setGame($(this).val());
+                });
+
+                $('#gamecheck').click(function (event) {
+                    event.preventDefault();
+                    if (checkForPupil()) {
+                        $('#locked,locked1').each(function () {
+                            $(this).hide();
+                        });
+                    } else {
+                        $('#gamecheckerror').text("Error: No game found.");
+                    }
+                });
+
                 function changeImage() {
                     var left = $('#left').val();
                     var right = $('#right').val();
@@ -83,6 +114,21 @@
             </h1>            
 
             <form>
+                <div id="locked" class="alert">  
+                    <h1>Find a game</h1>    
+                    </br></br></br></br>
+                    <p>Company Name</p>
+                    <select id="company"></select>
+                    </br></br>
+                    <p>Game Name</p>
+                    <select id="games"></select>
+                    <div id="gamecheckerror" class="tooltip"></div>
+                    </br></br></br>
+                    <button id="gamecheck" class="button">Submit</button>
+                </div>
+
+                <div id="locked" class="shadow"></div>
+
                 <div class="inline">
                     <p>Left Eye</p>
                     <input id="left" name="left" type="range" step="0.01" min="-0.2" max="0.2" value="0">                    

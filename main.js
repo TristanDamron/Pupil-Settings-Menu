@@ -1,7 +1,12 @@
+const appdata = require('appdata-path');
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 const fs = require('fs');
+
+var companySelected = "";
+var gameSelected = "";
+var masterPath = "";
 
 function createWindow () {
   win = new BrowserWindow({width: 800, height: 830, resizable: false, icon: path.join(__dirname, '/img/Pupil Icon.png')});
@@ -16,11 +21,11 @@ function createWindow () {
 app.on('ready', createWindow);
 
 function dumpToFile(json) {
-    fs.writeFile("../PupilData.json", unityifyJson(json), function(err) {
+    console.log("dumpin" + masterPath);    
+    fs.writeFile(masterPath, unityifyJson(json), function(err) {
         if (err) {
             return console.error("ERROR: Cannot open file.");
-        }  
-        console.log("dumpin");
+        }          
     });
 }
 
@@ -71,4 +76,59 @@ function unityifyJson(json) {
 
 function replaceAt (original, index, str) {
     return original.substr(0, index) + str + original.substr(index + 1, original.length);
+}
+
+function findCompanies() {
+    var arr = [];
+    var p = appdata.getAppDataPath().replace('Roaming', 'LocalLow');
+    var directories = fs.readdirSync(p);
+
+    directories.forEach(element => {
+        if (!element.includes('.')) {
+            arr.push(element);
+        }
+    }); 
+    
+    return arr;
+}
+
+function findGames() {
+    var arr = [];
+    var p = appdata.getAppDataPath().replace('Roaming', 'LocalLow');
+    var directories = fs.readdirSync(path.join(p, companySelected));
+
+    directories.forEach(element => {
+        if (!element.includes('.')) {
+            arr.push(element);
+        }
+    }); 
+    
+    return arr;
+}
+
+function checkForPupil() {
+    var p = appdata.getAppDataPath().replace('Roaming', 'LocalLow');
+    var directories = fs.readdirSync(path.join(p, companySelected, gameSelected));
+    var ret = false;
+
+    directories.forEach(element => {
+        if (element == "PupilData.json") {            
+            ret = true;
+            masterPath = path.join(p, companySelected, gameSelected, element);            
+        }
+    }); 
+
+    return ret;
+}
+
+function setCompany(str) {
+    companySelected = str;
+}
+
+function setGame(str) {
+    gameSelected = str;
+}
+
+function getCompany() {
+    return companySelected;
 }
