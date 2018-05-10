@@ -6,11 +6,10 @@ h1 {
     height: 10%;
     width: 100%;
     background-color: #cc6677;
-    top: 0;
     color: #fff;   
     position: absolute;
-    top: 0; 
     left: 0;
+    top: -25;
 }
 
 form {
